@@ -5,7 +5,7 @@ in IoT toepassingen om sensordata te versturen en deze terug op te halen. MQTT
 maakt gebruik van een Broker. De clients zijn in staat om zowel data te
 publiceren als te abonneren (subscribe) bij een broker op data.
 
-![]((./assets/1d04d39cec5848e5caa2affdaa4ad38b.png)
+![MQTT](./assets/1d04d39cec5848e5caa2affdaa4ad38b.png)
 
 In bovenstaande voorbeeld publiceert client B de dak temperatuur in het topic
 temperature/roof en client A de vloer temperatuur in het topic
@@ -18,7 +18,7 @@ De MQTT-broker is een zeer eenvoudig lichtgewicht server die perfect op een
 raspberry pi kan draaien. Er zijn eveneens gratis publieke MQTT-brokers
 beschikbaar zoals <https://www.hivemq.com/public-mqtt-broker/>
 
-![]((./assets/380bb5c601fbfd6c6f319e8bff144f7e.png)
+![HIVEMQ](./assets/380bb5c601fbfd6c6f319e8bff144f7e.png)
 
 ## Client
 
@@ -41,19 +41,19 @@ Er zijn verschillende mogelijkheden om een MQTT-broker op te zetten:
 
 -   …
 
-## Publiseren en subscriben (abonneren) op data bij de gratis publieke MQTT-broker hivemq
+## Gratis publieke MQTT-broker hivemq
 
-### Vanuit arduino berichten publiceren en ontvangen op een topic
+### Vanuit arduino berichten publiceren en abonneren op een topic
 
 Installeer de PubSubClient bibliotheek in arduino IDE.
 
-![]((./assets/bc276f5ffc3e6e07107446f43486f934.png)
+![Toevoegen bibliotheek](./assets/bc276f5ffc3e6e07107446f43486f934.png)
 
 ### ESP8266
 
 Maak gebruik van het LOLIN (WEMOS) D1 R2 bord. Vertrek van het voorbeeld
 
-![]((./assets/b7368dfb33dd5b75e9086bace49278ad.png)
+![Voorbeeld MQTT](./assets/VBMQTT.png)
 
 Stel de SSID en het Wifi-paswoord in.
 
@@ -181,11 +181,11 @@ void loop() {
 Een verzonden topic kan gekeken worden op
 <http://www.hivemq.com/demos/websocket-client/>
 
-![]((./assets/77cd8aee6582070d654e83bf61302306.png)
+![HiveMQ Connection]((./assets/77cd8aee6582070d654e83bf61302306.png)
 
 Schrijf vervolgens in op het topic. Voorbeeld:
 
-![]((./assets/0454e314d8d185becf7321d10ba47a74.png)
+![HiveMQ Publish]((./assets/0454e314d8d185becf7321d10ba47a74.png)
 
 ### Vragen
 
@@ -325,11 +325,11 @@ void loop() {
 Een verzonden topic kan gekeken worden op
 <http://www.hivemq.com/demos/websocket-client/>
 
-![]((./assets/77cd8aee6582070d654e83bf61302306.png)
+![HiveMQ Connection]((./assets/77cd8aee6582070d654e83bf61302306.png)
 
 Schrijf vervolgens in op het topic. Voorbeeld:
 
-![]((./assets/0454e314d8d185becf7321d10ba47a74.png)
+![HiveMQ Publish]((./assets/0454e314d8d185becf7321d10ba47a74.png)
 
 ### Vragen
 
