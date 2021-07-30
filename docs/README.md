@@ -1,5 +1,5 @@
 # MQTT
-
+## Pricipe MQTT
 Het MQTT-protocol (Message Queuing Telemetry Transport) wordt zeer veel gebruikt
 in IoT toepassingen om sensordata te versturen en deze terug op te halen. MQTT
 maakt gebruik van een Broker. De clients zijn in staat om zowel data te
@@ -25,8 +25,6 @@ beschikbaar zoals <https://www.hivemq.com/public-mqtt-broker/>
 De Clients kunnen zowel een esp8266, esp32, Raspberry Pi of een ander toestel
 wat verbonden is met het internet.
 
-
-
 ## Broker
 
 Er zijn verschillende mogelijkheden om een MQTT-broker op te zetten:
@@ -43,13 +41,13 @@ Er zijn verschillende mogelijkheden om een MQTT-broker op te zetten:
 
 ## Gratis publieke MQTT-broker hivemq
 
-### Vanuit arduino berichten publiceren en abonneren op een topic
+## Vanuit arduino berichten publiceren en abonneren op een topic
 
 Installeer de PubSubClient bibliotheek in arduino IDE.
 
 ![Toevoegen bibliotheek](./assets/bc276f5ffc3e6e07107446f43486f934.png)
 
-### ESP8266
+## ESP8266
 
 Maak gebruik van het LOLIN (WEMOS) D1 R2 bord. Vertrek van het voorbeeld
 
@@ -353,7 +351,7 @@ Schrijf vervolgens in op het topic. Voorbeeld:
     door. Laat vervolgens een 2de arduino hierop abonneren. Wanneer 1
     doorgezonden is, licht de ingebouwde led op.
 
-## Vanuit python op Raspberry pi
+## Python op Raspberry pi
 
 Voorbeeldcode waarbij iedere 30 seconden de waarde van een teller gepubliceerd
 wordt in het topic outTopic/teller.
