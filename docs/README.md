@@ -410,6 +410,7 @@ while True:
 
 ## Extra info
 
-<https://learn.adafruit.com/mqtt-adafruit-io-and-you>
+- Meer uitleg over MQTT <https://learn.adafruit.com/mqtt-adafruit-io-and-you>
+- MQTT en appinventor <https://community.appinventor.mit.edu/t/esp32-mqtt-broker-publish-subscribe-thingspeak/10490>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e78160d3-c387-40a5-b609-d22af50c0b9a/deploy-status)](https://app.netlify.com/sites/innovet-mqtt/deploys)
