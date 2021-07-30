@@ -181,11 +181,11 @@ void loop() {
 Een verzonden topic kan gekeken worden op
 <http://www.hivemq.com/demos/websocket-client/>
 
-![HiveMQ Connection]((./assets/77cd8aee6582070d654e83bf61302306.png)
+![HiveMQ Connection](./assets/77cd8aee6582070d654e83bf61302306.png)
 
 Schrijf vervolgens in op het topic. Voorbeeld:
 
-![HiveMQ Publish]((./assets/0454e314d8d185becf7321d10ba47a74.png)
+![HiveMQ Publish](./assets/0454e314d8d185becf7321d10ba47a74.png)
 
 ### Vragen
 
@@ -325,11 +325,11 @@ void loop() {
 Een verzonden topic kan gekeken worden op
 <http://www.hivemq.com/demos/websocket-client/>
 
-![HiveMQ Connection]((./assets/77cd8aee6582070d654e83bf61302306.png)
+![HiveMQ Connection](./assets/77cd8aee6582070d654e83bf61302306.png)
 
 Schrijf vervolgens in op het topic. Voorbeeld:
 
-![HiveMQ Publish]((./assets/0454e314d8d185becf7321d10ba47a74.png)
+![HiveMQ Publish](./assets/0454e314d8d185becf7321d10ba47a74.png)
 
 ### Vragen
 
