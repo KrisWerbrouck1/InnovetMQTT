@@ -5,7 +5,7 @@ in IoT toepassingen om sensordata te versturen en deze terug op te halen. MQTT
 maakt gebruik van een Broker. De clients zijn in staat om zowel data te
 publiceren als te abonneren (subscribe) bij een broker op data.
 
-![](media/1d04d39cec5848e5caa2affdaa4ad38b.png)
+![](assets/1d04d39cec5848e5caa2affdaa4ad38b.png)
 
 In bovenstaande voorbeeld publiceert client B de dak temperatuur in het topic
 temperature/roof en client A de vloer temperatuur in het topic
@@ -18,7 +18,7 @@ De MQTT-broker is een zeer eenvoudig lichtgewicht server die perfect op een
 raspberry pi kan draaien. Er zijn eveneens gratis publieke MQTT-brokers
 beschikbaar zoals <https://www.hivemq.com/public-mqtt-broker/>
 
-![](media/380bb5c601fbfd6c6f319e8bff144f7e.png)
+![](assets/380bb5c601fbfd6c6f319e8bff144f7e.png)
 
 ## Client
 
@@ -47,13 +47,13 @@ Er zijn verschillende mogelijkheden om een MQTT-broker op te zetten:
 
 Installeer de PubSubClient bibliotheek in arduino IDE.
 
-![](media/bc276f5ffc3e6e07107446f43486f934.png)
+![](assets/bc276f5ffc3e6e07107446f43486f934.png)
 
 ### ESP8266
 
 Maak gebruik van het LOLIN (WEMOS) D1 R2 bord. Vertrek van het voorbeeld
 
-![](media/b7368dfb33dd5b75e9086bace49278ad.png)
+![](assets/b7368dfb33dd5b75e9086bace49278ad.png)
 
 Stel de SSID en het Wifi-paswoord in.
 
@@ -179,11 +179,11 @@ void loop() {
 Een verzonden topic kan gekeken worden op
 <http://www.hivemq.com/demos/websocket-client/>
 
-![](media/77cd8aee6582070d654e83bf61302306.png)
+![](assets/77cd8aee6582070d654e83bf61302306.png)
 
 Schrijf vervolgens in op het topic. Voorbeeld:
 
-![](media/0454e314d8d185becf7321d10ba47a74.png)
+![](assets/0454e314d8d185becf7321d10ba47a74.png)
 
 ### Vragen
 
@@ -323,11 +323,11 @@ void loop() {
 Een verzonden topic kan gekeken worden op
 <http://www.hivemq.com/demos/websocket-client/>
 
-![](media/77cd8aee6582070d654e83bf61302306.png)
+![](assets/77cd8aee6582070d654e83bf61302306.png)
 
 Schrijf vervolgens in op het topic. Voorbeeld:
 
-![](media/0454e314d8d185becf7321d10ba47a74.png)
+![](assets/0454e314d8d185becf7321d10ba47a74.png)
 
 ### Vragen
 
