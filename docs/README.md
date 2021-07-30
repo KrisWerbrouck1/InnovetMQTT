@@ -41,7 +41,7 @@ Er zijn verschillende mogelijkheden om een MQTT-broker op te zetten:
 
 ## Gratis publieke MQTT-broker hivemq
 
-## Vanuit arduino berichten publiceren en abonneren op een topic
+## Berichten publiceren en abonneren op een topic
 
 Installeer de PubSubClient bibliotheek in arduino IDE.
 
