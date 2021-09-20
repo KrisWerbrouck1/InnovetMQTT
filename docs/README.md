@@ -69,9 +69,9 @@ const char* mqtt_server = "broker.hivemq.com";
 Deze code is gebaseerd op <https://github.com/knolleary/pubsubclient>
 
 Voorbeeldcode waarbij iedere 2 seconden “Hello world” + de waarde van een teller
-gepubliceerd wordt in het topic outTopic.
+gepubliceerd wordt in het topic “outTopic”.
 
-Eveneens is er geabonneerd (subscribe) op het topic inTopic. Wanneer het eerste
+Eveneens is er geabonneerd (subscribe) op het topic “inTopic”. Wanneer het eerste
 karakter van de data op het topic inTopic een 1 is, licht de ingebouwde led op,
 bij een andere karakter licht de ingebouwde led niet op.
 
@@ -212,9 +212,9 @@ Schrijf vervolgens in op het topic. Voorbeeld:
 Deze code is gebaseerd op <https://github.com/knolleary/pubsubclient>
 
 Voorbeeldcode waarbij iedere 2 seconden “Hello world” + de waarde van een teller
-gepubliceerd wordt in het topic outTopic.
+gepubliceerd wordt in het topic “outTopic”.
 
-Eveneens is er geabonneerd (subscribe) op het topic inTopic. Wanneer het eerste
+Eveneens is er geabonneerd (subscribe) op het topic “inTopic”. Wanneer het eerste
 karakter van de data op het topic inTopic een 1 is, licht de ingebouwde led op,
 bij een andere karakter licht de ingebouwde led niet op.
 
@@ -354,7 +354,7 @@ Schrijf vervolgens in op het topic. Voorbeeld:
 ## Python op Raspberry pi
 
 Voorbeeldcode waarbij iedere 30 seconden de waarde van een teller gepubliceerd
-wordt in het topic outTopic/teller.
+wordt in het topic “outTopic/teller”.
 
 Eveneens is er geabonneerd (subscribe) op alles van het topic inTopic.
 
