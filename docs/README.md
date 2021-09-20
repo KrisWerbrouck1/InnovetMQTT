@@ -23,7 +23,7 @@ beschikbaar zoals <https://www.hivemq.com/public-mqtt-broker/>
 ## Client
 
 De Clients kunnen zowel een esp8266, esp32, Raspberry Pi of een ander toestel
-wat verbonden is met het internet.
+dat verbonden is met het internet.
 
 ## Broker
 
@@ -49,7 +49,7 @@ Installeer de PubSubClient bibliotheek in arduino IDE.
 
 ## ESP8266
 
-Maak gebruik van het LOLIN (WEMOS) D1 R2 bord. Vertrek van het voorbeeld
+Maak gebruik van het LOLIN (WEMOS) D1 R2 bord. Vertrek van het voorbeeld.
 
 ![Voorbeeld MQTT](./assets/VBMQTT.png)
 
@@ -176,7 +176,7 @@ void loop() {
     }
 }
 ```
-Een verzonden topic kan gekeken worden op
+Een verzonden topic kan bekeken worden op
 <http://www.hivemq.com/demos/websocket-client/>
 
 ![HiveMQ Connection](./assets/77cd8aee6582070d654e83bf61302306.png)
@@ -196,14 +196,14 @@ Schrijf vervolgens in op het topic. Voorbeeld:
 
 ### Opdrachten
 
--   Pas de code aan zodat iedere 30 seconden een teller met 1 verhoogd en deze
+-   Pas de code aan zodat iedere 30 seconden een teller met 1 verhoogt en deze
     waarde gepubliceerd wordt in het topic esp/je eigen naam. Bewaar als
     mqttESP8266Oef1.
 -   Pas de code aan zodat iedere 30 seconden de lichtsterkte doorgezonden wordt
     (analoge waarde). De lichtsterkte wordt gepubliceerd in het topic esp/je
     eigen naamLichtstrekte. Bewaar als mqttESP8266Oef2.
 -   Wanneer een schakelaar ingedrukt is, stuur je de waarde 1 door naar het
-    topic esp/je eigen naamLicht. Wanneer deze niet ingedrukt is stuur je 0
+    topic esp/je eigen naamLicht. Wanneer deze niet ingedrukt is, stuur je 0
     door. Laat vervolgens een 2de arduino hierop abonneren. Wanneer 1
     doorgezonden is, licht de ingebouwde led op.
 
@@ -340,14 +340,14 @@ Schrijf vervolgens in op het topic. Voorbeeld:
 
 ### Opdrachten
 
--   Pas de code aan zodat iedere 30 seconden een teller met 1 verhoogd en deze
+-   Pas de code aan zodat iedere 30 seconden een teller met 1 verhoogt en deze
     waarde gepubliceerd wordt in het topic esp/je eigen naam. Bewaar als
     mqttESP32Oef1.
 -   Pas de code aan zodat iedere 30 seconden de lichtsterkte doorgezonden wordt
     (analoge waarde). De lichtsterkte wordt gepubliceerd in het topic esp/je
     eigen naamLichtstrekte. Bewaar als mqttESP32Oef2.
 -   Wanneer een schakelaar ingedrukt is, stuur je de waarde 1 door naar het
-    topic esp/je eigen naamLicht. Wanneer deze niet ingedrukt is stuur je 0
+    topic esp/je eigen naamLicht. Wanneer deze niet ingedrukt is, stuur je 0
     door. Laat vervolgens een 2de arduino hierop abonneren. Wanneer 1
     doorgezonden is, licht de ingebouwde led op.
 
@@ -396,14 +396,14 @@ while True:
 
 ### Opdrachten
 
--   Pas de code aan zodat iedere 30 seconden een teller met 1 verhoogd en deze
+-   Pas de code aan zodat iedere 30 seconden een teller met 1 verhoogt en deze
     waarde gepubliceerd wordt in het topic je eigen naam/teller. Bewaar als
     mqttRaspberryPiOef1.
 -   Pas de code aan zodat iedere 30 seconden de temperatuur doorgezonden wordt
     via een DHT11. De temperatuur wordt gepubliceerd in het topic je eigen
     naam/Temperatuur. Bewaar als mqttRaspberryPiOef2.
 -   Wanneer een schakelaar ingedrukt is, stuur je de waarde 1 door naar het
-    topic je eigen naam/Licht. Wanneer deze niet ingedrukt is stuur je 0 door.
+    topic je eigen naam/Licht. Wanneer deze niet ingedrukt is, stuur je 0 door.
     Abonneer vervolgens een 2de raspberry pi hierop. Wanneer 1 doorgezonden is,
     licht een led op.
 
