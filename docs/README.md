@@ -320,7 +320,7 @@ void loop() {
 }
 ```
 
-Een verzonden topic kan gekeken worden op
+Een verzonden topic kan bekeken worden op
 <http://www.hivemq.com/demos/websocket-client/>
 
 ![HiveMQ Connection](./assets/77cd8aee6582070d654e83bf61302306.png)
