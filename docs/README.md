@@ -351,48 +351,69 @@ Schrijf vervolgens in op het topic. Voorbeeld:
     door. Laat vervolgens een 2de arduino hierop abonneren. Wanneer 1
     doorgezonden is, licht de ingebouwde led op.
 
-## Python op Raspberry pi
+## Python
 
-Voorbeeldcode waarbij iedere 30 seconden de waarde van een teller gepubliceerd
-wordt in het topic “outTopic/teller”.
-
-Eveneens is er geabonneerd (subscribe) op alles van het topic inTopic.
+### Publiceren
 
 Bron: <https://www.hivemq.com/blog/mqtt-client-library-paho-python/>
+
+In onderstaande voorbeeldcode wordt iedere 30 seconden de temperatuur van kamer 1 en 2 gepubliceerd
+in de topics “houseKris/temp/room1” en "houseKris/temp/room2".
+
+Eveneens is er geabonneerd (subscribe) op alles van het topic inTopic.
 
 ```py
 import paho.mqtt.client as paho
 import time
-teller=1
+import random
+
 def on_publish(client, userdata, mid):
-    print("mid: "+str(mid))
-
-def on_subscribe(client, userdata, mid, granted_qos):
-    print("Subscribed: "+str(mid)+" "+str(granted_qos))
-
-def on_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.qos)+" "+str(msg.payload))
+    print("mid: " + str(mid))
 
 client = paho.Client()
 client.on_publish = on_publish
-client.on_subscribe = on_subscribe
-client.on_message = on_message
 client.connect("broker.mqttdashboard.com", 1883)
-client.subscribe("inTopic/#", qos=1)
 client.loop_start()
 
 while True:
-    (rc, mid) = client.publish("outTopic/teller", str(teller), qos=1)
-    teller = teller+1
+    temperature_room1 = random.randint(5, 20)
+    temperature_room2 = random.randint(5, 20)
+    (rc, mid) = client.publish("houseKris/temp/room1", str(temperature_room1), qos=1)
+    (rc, mid) = client.publish("houseKris/temp/room2", str(temperature_room2), qos=1)
     time.sleep(30)
+
+```
+
+### Abonneren (Subscribe)
+
+In onderstaande voorbeeldcode is geabonneerd (subscribe) op alles van het topic "houseKris/temperature/#".
+
+```py
+import paho.mqtt.client as paho
+
+def on_subscribe(client, userdata, mid, granted_qos):
+    print("Subscribed: " + str(mid) + " " + str(granted_qos))
+
+def on_message(client, userdata, msg):
+    print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
+
+client = paho.Client()
+client.on_subscribe = on_subscribe
+client.on_message = on_message
+client.connect("broker.mqttdashboard.com", 1883)
+client.subscribe("houseKris/temperature/#", qos=1)
+
+client.loop_forever()
+
+
 ```
 
 ### Vragen
 
 -   Om de hoeveel tijd wordt een bericht gepubliceerd in de voorbeeldcode? 
--   In welk topic wordt data gepubliceerd?
+-   In welk topic's wordt data gepubliceerd?
 -   Welke data wordt er gepubliceerd? 
--   Op welk topic is er geabonneerd?
+-   Op welk topic's wordt er geabonneerd?
 
 ### Opdrachten
 
