@@ -360,8 +360,6 @@ Bron: <https://www.hivemq.com/blog/mqtt-client-library-paho-python/>
 In onderstaande voorbeeldcode wordt iedere 30 seconden de temperatuur van kamer 1 en 2 gepubliceerd
 in de topics “houseKris/temp/room1” en "houseKris/temp/room2".
 
-Eveneens is er geabonneerd (subscribe) op alles van het topic inTopic.
-
 ```py
 import paho.mqtt.client as paho
 import time
