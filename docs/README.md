@@ -211,10 +211,109 @@ Schrijf vervolgens in op het topic. Voorbeeld:
 
 Deze code is gebaseerd op <https://github.com/knolleary/pubsubclient>
 
-Voorbeeldcode waarbij iedere 2 seconden “Hello world” + de waarde van een teller
-gepubliceerd wordt in het topic “outTopic”.
+### Publiceren van data
 
-Eveneens is er geabonneerd (subscribe) op het topic “inTopic”. Wanneer het eerste
+In onderstaande voorbeeldcode wordt iedere 2 seconden "Hello world" + de waarde van een teller gepubliceerd in het topic "VTI-Torhout".
+
+```cpp
+#include <WiFi.h>
+#include <PubSubClient.h>
+
+// Update these with values suitable for your network.
+
+const char* ssid = "........";
+const char* password = "........";
+const char* mqtt_server = "broker.mqtt-dashboard.com";
+
+const char* publishTopic="VTI-Torhout";
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+unsigned long lastMsg = 0;
+#define MSG_BUFFER_SIZE (50)
+char msg[MSG_BUFFER_SIZE];
+int value = 0;
+
+void setup_wifi() {
+  delay(10);
+  // We start by connecting to a WiFi network
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  randomSeed(micros());
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void reconnect() {
+  // Loop until we're reconnected
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    // Create a random client ID
+    String clientId = "ESP32Client-";
+    clientId += String(random(0xffff), HEX);
+    // Attempt to connect
+    if (client.connect(clientId.c_str())) {
+      Serial.println("connected");
+      // Once connected, publish an announcement...
+      client.publish("outTopic", "hello world");
+    }
+    else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
+}
+
+void setup() {
+  Serial.begin(115200);
+  setup_wifi();
+  client.setServer(mqtt_server, 1883);
+}
+
+void loop() {
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+  unsigned long now = millis();
+  if (now - lastMsg > 2000) {
+    lastMsg = now;
+    ++value;
+    snprintf (msg, MSG_BUFFER_SIZE, "hello world #%ld", value);
+    Serial.print("Topic: ");
+    Serial.println(publishTopic);
+    Serial.print("Publish message: ");
+    Serial.println(msg);
+    client.publish(publishTopic, msg);
+  }
+}
+```
+
+Een verzonden topic kan bekeken worden op
+<http://www.hivemq.com/demos/websocket-client/>
+
+![HiveMQ Connection](./assets/77cd8aee6582070d654e83bf61302306.png)
+
+Schrijf vervolgens in op het topic. Voorbeeld:
+
+![HiveMQ Publish](./assets/0454e314d8d185becf7321d10ba47a74.png)
+
+
+
+### Abonneren (subscribe)
+
+In onderstaande voorbeeldcode is er geabonneerd (subscribe) op het topic "VTI-Torhout". Wanneer het eerste
 karakter van de data op het topic inTopic een 1 is, licht de ingebouwde led op,
 bij een andere karakter licht de ingebouwde led niet op.
 
@@ -227,6 +326,9 @@ bij een andere karakter licht de ingebouwde led niet op.
 const char* ssid = "........";
 const char* password = "........";
 const char* mqtt_server = "broker.mqtt-dashboard.com";
+const char* subscribeTopic="VTI-Torhout";
+
+#define ledPin 2
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -263,10 +365,9 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.println();
     // Switch on the LED if an 1 was received as first character
     if ((char)payload[0] == '1') {
-        digitalWrite(BUILTIN_LED, HIGH); 
-        // Turn the LED on 
+        digitalWrite(ledPin, HIGH); // Turn the LED on 
     } else {
-        digitalWrite(BUILTIN_LED, LOW); // Turn the LED off
+        digitalWrite(ledPin, LOW); // Turn the LED off
     }
 }
 
@@ -280,10 +381,7 @@ void reconnect() {
     // Attempt to connect
     if (client.connect(clientId.c_str())) {
         Serial.println("connected");
-        // Once connected, publish an announcement...
-        client.publish("outTopic", "hello world");
-        // ... and resubscribe
-        client.subscribe("inTopic");
+        client.subscribe(subscribeTopic);
         } 
         else {
         Serial.print("failed, rc=");
@@ -296,7 +394,7 @@ void reconnect() {
 }
 
 void setup() {
-    pinMode(BUILTIN_LED, OUTPUT); // Initialize the BUILTIN_LED pin as an output
+    pinMode(ledPin, OUTPUT); // Instellen ledPin als uitgang
     Serial.begin(115200);
     setup_wifi();
     client.setServer(mqtt_server, 1883);
@@ -308,27 +406,122 @@ void loop() {
         reconnect();
     }
     client.loop();
-    unsigned long now = millis();
-    if (now - lastMsg > 2000) {
-        lastMsg = now;
-        ++value;
-        snprintf (msg, MSG_BUFFER_SIZE, "hello world #%ld", value);
-        Serial.print("Publish message: ");
-        Serial.println(msg);
-        client.publish("outTopic", msg);
-    }
 }
 ```
 
-Een verzonden topic kan bekeken worden op
-<http://www.hivemq.com/demos/websocket-client/>
+### Publiceren en abonneren
 
-![HiveMQ Connection](./assets/77cd8aee6582070d654e83bf61302306.png)
+In onderstaande voorbeeldcode wordt iedere 2 seconden de waarde "Hello world" + de waarde van een teller gepubliceerd in het topic "outTopic".
 
-Schrijf vervolgens in op het topic. Voorbeeld:
+Eveneens is er geabonneerd (subscribe) op het topic "inTopic". Wanneer het eerste karakter van de data op het topic inTopic een 1 is, licht de ingebouwde led op, bij een andere karakter licht de ingebouwde led niet op.
 
-![HiveMQ Publish](./assets/0454e314d8d185becf7321d10ba47a74.png)
+```cpp
+#include <WiFi.h>
+#include <PubSubClient.h>
 
+// Update these with values suitable for your network.
+
+const char* ssid = "........";
+const char* password = "........";
+const char* mqtt_server = "broker.mqtt-dashboard.com";
+const char* subscribeTopic = "VTI-TorhoutSub";
+const char* publishTopic = "VTI-TorhoutPub";
+
+#define ledPin 2
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+unsigned long lastMsg = 0;
+#define MSG_BUFFER_SIZE (50)
+char msg[MSG_BUFFER_SIZE];
+int value = 0;
+
+void setup_wifi() {
+  delay(10);
+  // We start by connecting to a WiFi network
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  randomSeed(micros());
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]);
+  }
+  Serial.println();
+  // Switch on the LED if an 1 was received as first character
+  if ((char)payload[0] == '1') {
+    digitalWrite(ledPin, HIGH);     // Turn the LED on
+  } else {
+    digitalWrite(ledPin, LOW); // Turn the LED off
+  }
+}
+
+void reconnect() {
+  // Loop until we're reconnected
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    // Create a random client ID
+    String clientId = "ESP32Client-";
+    clientId += String(random(0xffff), HEX);
+    // Attempt to connect
+    if (client.connect(clientId.c_str())) {
+      Serial.println("connected");
+      // Once connected, publish an announcement...
+      client.publish(publishTopic, "hello world");
+      // ... and resubscribe
+      client.subscribe(subscribeTopic);
+    }
+    else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
+}
+
+void setup() {
+  pinMode(ledPin, OUTPUT); // instellen ledPin als uitgang
+  Serial.begin(115200);
+  setup_wifi();
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
+}
+
+void loop() {
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+  unsigned long now = millis();
+  if (now - lastMsg > 2000) {
+    lastMsg = now;
+    ++value;
+    snprintf (msg, MSG_BUFFER_SIZE, "hello world #%ld", value);
+    Serial.print("Publish topic: ");
+    Serial.println(publishTopic);
+    Serial.print("Publish message: ");
+    Serial.println(msg);
+    client.publish(publishTopic, msg);
+  }
+}
+
+```
 ### Vragen
 
 -   Om de hoeveel tijd wordt een bericht gepubliceerd in de voorbeeldcode?
