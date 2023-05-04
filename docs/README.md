@@ -263,7 +263,7 @@ void reconnect() {
     if (client.connect(clientId.c_str())) {
       Serial.println("connected");
       // Once connected, publish an announcement...
-      client.publish("outTopic", "hello world");
+      client.publish(publishTopic, "hello world");
     }
     else {
       Serial.print("failed, rc=");
@@ -289,7 +289,7 @@ void loop() {
   unsigned long now = millis();
   if (now - lastMsg > 2000) {
     lastMsg = now;
-    ++value;
+    value++;
     snprintf (msg, MSG_BUFFER_SIZE, "hello world #%ld", value);
     Serial.print("Topic: ");
     Serial.println(publishTopic);
