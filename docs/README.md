@@ -548,6 +548,12 @@ void loop() {
 
 ### Publiceren
 
+Voeg de paho-mqtt bibliotheek toe indien nodig via:
+
+```py
+pip install paho-mqtt
+```
+
 Bron: <https://www.hivemq.com/blog/mqtt-client-library-paho-python/>
 
 In onderstaande voorbeeldcode wordt iedere 30 seconden de temperatuur van kamer 1 en 2 gepubliceerd
