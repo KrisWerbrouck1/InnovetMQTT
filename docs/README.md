@@ -411,9 +411,9 @@ void loop() {
 
 ### Publiceren en abonneren
 
-In onderstaande voorbeeldcode wordt iedere 2 seconden de waarde "Hello world" + de waarde van een teller gepubliceerd in het topic "outTopic".
+In onderstaande voorbeeldcode wordt iedere 2 seconden de waarde "Hello world" + de waarde van een teller gepubliceerd in het topic "VTI-TorhoutPub".
 
-Eveneens is er geabonneerd (subscribe) op het topic "inTopic". Wanneer het eerste karakter van de data op het topic inTopic een 1 is, licht de ingebouwde led op, bij een andere karakter licht de ingebouwde led niet op.
+Eveneens is er geabonneerd (subscribe) op het topic "VTI-TorhoutSub". Wanneer het eerste karakter van de data op het topic "VTI-TorhoutSub" een 1 is, licht een led op, bij een andere karakter licht de led niet op.
 
 ```cpp
 #include <WiFi.h>
