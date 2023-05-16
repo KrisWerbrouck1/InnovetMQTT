@@ -314,8 +314,7 @@ Schrijf vervolgens in op het topic. Voorbeeld:
 ### Abonneren (subscribe)
 
 In onderstaande voorbeeldcode is er geabonneerd (subscribe) op het topic "VTI-Torhout". Wanneer het eerste
-karakter van de data op het topic inTopic een 1 is, licht de ingebouwde led op,
-bij een andere karakter licht de ingebouwde led niet op.
+karakter van de data in het topic een 1 is, licht de led op, bij een andere karakter licht de led niet op.
 
 ```cpp
 #include <WiFi.h>
