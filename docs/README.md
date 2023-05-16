@@ -556,7 +556,7 @@ pip install paho-mqtt
 Bron: <https://www.hivemq.com/blog/mqtt-client-library-paho-python/>
 
 In onderstaande voorbeeldcode wordt iedere 30 seconden de temperatuur van kamer 1 en 2 gepubliceerd
-in de topics “houseKris/temp/room1” en "houseKris/temp/room2".
+in de topics “VTI-Torhout/temp/room1” en "VTI-Torhout/temp/room2".
 
 ```py
 import paho.mqtt.client as paho
@@ -574,15 +574,15 @@ client.loop_start()
 while True:
     temperature_room1 = random.randint(5, 20)
     temperature_room2 = random.randint(5, 20)
-    (rc, mid) = client.publish("houseKris/temp/room1", str(temperature_room1), qos=1)
-    (rc, mid) = client.publish("houseKris/temp/room2", str(temperature_room2), qos=1)
+    (rc, mid) = client.publish("VTI-Torhout/temp/room1", str(temperature_room1), qos=1)
+    (rc, mid) = client.publish("VTI-Torhout/temp/room2", str(temperature_room2), qos=1)
     time.sleep(30)
 
 ```
 
 ### Abonneren (Subscribe)
 
-In onderstaande voorbeeldcode is geabonneerd (subscribe) op alles van het topic "houseKris/temperature/#".
+In onderstaande voorbeeldcode is geabonneerd (subscribe) op alles van het topic "VTI-Torhout/temperature/#".
 
 ```py
 import paho.mqtt.client as paho
@@ -597,7 +597,7 @@ client = paho.Client()
 client.on_subscribe = on_subscribe
 client.on_message = on_message
 client.connect("broker.mqttdashboard.com", 1883)
-client.subscribe("houseKris/temperature/#", qos=1)
+client.subscribe("VTI-Torhout/temperature/#", qos=1)
 
 client.loop_forever()
 
